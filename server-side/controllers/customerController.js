@@ -42,6 +42,19 @@ class CustomerController {
             // next(error)
         }
     }
+
+    static async postRegister(req,res,next){
+        try{
+
+            const {fullName, email, password, avatar} = req.body
+
+            await Customer.create(req.body)
+
+            res.status(201).json(`New account with email ${email} has created`)
+        }catch(error){
+            next(error)
+        }
+    }
 }
 
 module.exports = CustomerController

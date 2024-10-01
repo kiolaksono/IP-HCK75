@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { hashPass } = require('../helpers/hash');
 module.exports = (sequelize, DataTypes) => {
   class Customer extends Model {
     /**
@@ -11,16 +12,68 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Customer.hasMany(models.Transaction)
     }
   }
   Customer.init({
-    fullName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    avatar: DataTypes.STRING
+    fullName: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Name is required"
+        },
+        notEmpty:{
+          msg:"Name is required"
+        }
+      }
+    },
+    email: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Email is required"
+        },
+        notEmpty:{
+          msg:"Email is required"
+        },
+        isEmail:{
+          msg: "Invalid email format"
+        }
+    }
+    },
+    password: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Password is required"
+        },
+        notEmpty:{
+          msg:"Password is required"
+        },
+      }
+    },
+    avatar: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Avatar is required"
+        },
+        notEmpty:{
+          msg:"Avatar is required"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Customer',
   });
+
+  Customer.beforeCreate(customer=>{
+    customer.password = hashPass(customer.password)
+  })
   return Customer;
 };

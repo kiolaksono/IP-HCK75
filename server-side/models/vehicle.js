@@ -11,14 +11,48 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Vehicle.hasMany(models.Transaction)
     }
   }
   Vehicle.init({
-    name: DataTypes.STRING,
+    name: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Name is required"
+        },
+        notEmpty:{
+          msg:"Name is required"
+        }
+      }
+    },
     colour: DataTypes.STRING,
-    cc: DataTypes.INTEGER,
+    cc: {
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Cylinder Capacity (CC) is required"
+        },
+        notEmpty:{
+          msg:"Cylinder Capacity (CC) is required"
+        },
+      }
+    },
     productionYear: DataTypes.STRING,
-    image: DataTypes.STRING
+    image: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg:"Image vehicle is required"
+        },
+        notEmpty:{
+          msg:"Image vehicle is required"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Vehicle',

@@ -1,0 +1,27 @@
+[
+    {
+        fullName : "Kio Laksono",
+        email : "kiolaksono@mail.com",
+        password : "qwerty123",
+        avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5zv605IDYRA7f3I0IMFUy4BKP3ETSMleuJA&s",
+    },
+    {
+        fullName : "Bagus Purnomo",
+        email : "baguspurnomo@mail.com",
+        password : "qwerty123",
+        avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5zv605IDYRA7f3I0IMFUy4BKP3ETSMleuJA&s",
+    },
+    {
+        fullName : "Aji Septian",
+        email : "ajiseptian@mail.com",
+        password : "qwerty123",
+        avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5zv605IDYRA7f3I0IMFUy4BKP3ETSMleuJA&s",
+    },
+    {
+        fullName : "Alexander Bryan",
+        email : "alexanderbryan@mail.com",
+        password : "qwerty123",
+        avatar : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5zv605IDYRA7f3I0IMFUy4BKP3ETSMleuJA&s",
+    },
+
+]

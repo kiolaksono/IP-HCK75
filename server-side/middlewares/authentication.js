@@ -1,5 +1,5 @@
 const { verifyToken } = require("../helpers/jwt")
-const { User } = require('../models')
+const { Customer } = require('../models')
 
 async function authentication(req, res, next) {
     const bearerToken = req.headers["authorization"]
@@ -17,17 +17,17 @@ async function authentication(req, res, next) {
 
     try {
         const data = verifyToken(token)
-        const user = await User.findByPk(data.id)
+        const find = await Customer.findByPk(data.id)
 
-        if (!user) {
+        if (!find) {
             next({ name: "Unauthorized", message: "Invalid Token" })
             return
         }
 
-        req.user = user
+        req.user = find
         next()
     } catch (error) {
-        console.log(error,)
+        // console.log(error,)
         next(error)
     }
 }

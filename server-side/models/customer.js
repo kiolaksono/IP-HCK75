@@ -53,6 +53,10 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty:{
           msg:"Password is required"
         },
+        len:{
+          args:[8],
+          msg:"Length minimum of password is 8"
+        }
       }
     },
     avatar: {
@@ -75,5 +79,6 @@ module.exports = (sequelize, DataTypes) => {
   Customer.beforeCreate(customer=>{
     customer.password = hashPass(customer.password)
   })
+  
   return Customer;
 };

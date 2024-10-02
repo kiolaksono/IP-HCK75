@@ -16,6 +16,42 @@ class CustomerController {
         }
     }
 
+    static async getCustomerById(req,res,next){
+        try {
+            const {id} = req.params
+            const find = await Customer.findByPk(id, {
+                attributes:{
+                    exclude:["password"]
+
+                }
+            })
+            
+            if(!find) throw({name:"NotFound", message:"Customer no found"})
+
+            res.status(200).json(find)
+            
+        } catch (error) {
+            next(error)
+        }
+
+    }
+
+    static async updateCustomerById(req,res,next){
+        try {
+            const {id} = req.params
+            const find = await Customer.findByPk(id)
+
+            if(!find) throw({name:"NotFound", message:"Customer no found"})
+
+            await find.update(req.body, {where:{id}})
+
+            res.status(200).json({message: `Customer with id ${id} has been updated`})
+
+        } catch (error) {
+            next(error)
+        }
+    }
+
     static async postLogin(req,res,next){
         try {
             const {email, password} = req.body

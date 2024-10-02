@@ -84,6 +84,8 @@ module.exports = (sequelize, DataTypes) => {
   Transaction.beforeValidate(el=>{
     el.status = "Paid"
   })
+
+  
   
   return Transaction;
 };

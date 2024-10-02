@@ -5,4 +5,5 @@ const vehicles = express.Router()
 
 vehicles.get("/", VehicleController.getAllVehicle)
 
+
 module.exports = vehicles

@@ -11,6 +11,7 @@ const errorHandler = require('../middlewares/errorHandler')
 router.get("/", VehicleController.getPubVehicle)
 router.post("/login", CustomerController.postLogin)
 router.post('/register', CustomerController.postRegister)
+router.post("/auth/google", CustomerController.postGoogleAuth)
 
 router.use('/customers', customers)
 

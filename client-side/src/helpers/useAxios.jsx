@@ -40,6 +40,15 @@ function useAxios(){
         }
     }
 
+    const tryOAuth = async (url, data) =>{
+        try {
+            const response = await baseURL.post(url, data)
+            return response
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const tryPost = async (url, data) =>{
         try {
             const response = await baseURL.post(url, data,{

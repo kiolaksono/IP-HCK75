@@ -22,9 +22,8 @@ export default function Login(){
   
       try {
         const response =  await tryAuth("login",data)
-        console.log(response)
-        // localStorage.setItem("access_token", response.data.data.access_token)
-        // navigation("/")
+        localStorage.setItem("access_token", response.data.access_token)
+        navigation("/home")
       } catch (error) {
         console.log(error)
       }

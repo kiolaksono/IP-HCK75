@@ -1,15 +1,21 @@
-import Button from "./Button"
+import { Link } from "react-router-dom";
+import Button from "./Button";
 
-export default function LoginForm({data, handleInputLogin, handleLogin}){
-
-    return(
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm g-10 content-center" >
-        <div className="g-10">
-        <form onSubmit={handleLogin} className="space-y-6">
-          <div>
+export default function LoginForm({ data, handleInputLogin, handleLogin }) {
+  return (
+    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-lg g-10 pt-10">
+      <div className="g-10">
+        <form onSubmit={handleLogin}>
+          <div className="flex justify-center pb-12">
+            <h1 className="text-4xl font-semibold leading-7 text-gray-900">
+              Login
+            </h1>
+          </div>
+          <div className="w-full">
+          <div className="mt-10">
             <label
               htmlFor="email"
-              className="block text-sm font-medium leading-6 text-gray-900"
+              className="block text-lg font-medium leading-6 text-gray-900"
             >
               Email
             </label>
@@ -26,11 +32,11 @@ export default function LoginForm({data, handleInputLogin, handleLogin}){
             </div>
           </div>
 
-          <div>
+          <div className="mt-10">
             <div className="flex items-center justify-between">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-lg font-medium leading-6 text-gray-900"
               >
                 Password
               </label>
@@ -48,11 +54,16 @@ export default function LoginForm({data, handleInputLogin, handleLogin}){
               />
             </div>
           </div>
-        <Button name={"Login"}/>
+          <div className="mt-10 flex flex-wrap gap-10 content-end text-end">
+          <Button name={"Login"} />
+          <p className="font-semibold">Don't have an account? <Link className="text-xl text-blue-500 font-bold text-end" to="/register">Create the new one</Link></p>
+
+          </div>
+          <div className=" mt-5">
+          </div>
+          </div>
         </form>
-
-        </div>
-
       </div>
-    )
+    </div>
+  );
 }

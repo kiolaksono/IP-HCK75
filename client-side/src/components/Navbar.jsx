@@ -1,4 +1,18 @@
+import { useNavigate } from "react-router-dom";
+import Button from "./Button";
+
 export default function Navbar() {
+
+  const navigate = useNavigate()
+
+
+  function handleLogout(){
+    localStorage.clear()
+    
+    navigate("/")
+  
+  }
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -47,7 +61,7 @@ export default function Navbar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
+            <a>Home</a>
           </li>
           <li>
             <details>
@@ -68,7 +82,7 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <Button onClick={handleLogout} name="Logout"/>
       </div>
     </div>
   );

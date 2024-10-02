@@ -22,7 +22,7 @@ export default function Login(){
   
       try {
         const response =  await tryAuth("login",data)
-        localStorage.setItem("access_token", response.data.access_token)
+        localStorage.setItem("access_token", response.data.accessToken)
         navigation("/home")
       } catch (error) {
         console.log(error)
@@ -39,7 +39,7 @@ export default function Login(){
     }
 
     return(
-        <LoginForm data={data} handleInputLogin={handleInputLogin} handleLogin={handleLogin}/>
+        <LoginForm data={formLogin} handleInputLogin={handleInputLogin} handleLogin={handleLogin}/>
         
     )
 }

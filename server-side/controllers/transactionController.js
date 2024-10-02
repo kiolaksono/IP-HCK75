@@ -24,7 +24,7 @@ class TransactionController{
 
     static async getTransactionByCustomerId(req,res,next){
         try {
-            const {CustomerId} = req.params
+            const {id} = req.user
             const data = await Transaction.findAll({
                 include:[
                     {
@@ -34,10 +34,10 @@ class TransactionController{
                     },
                     {
                         model : Vehicle,
-                        attributes : ["name"]
+                        attributes : ["name","image"]
                     }
                 ],
-                where:{CustomerId:CustomerId}
+                where:{CustomerId:id}
             })
 
             res.status(200).json(data)
@@ -59,7 +59,7 @@ class TransactionController{
                     },
                     {
                         model : Vehicle,
-                        attributes : ["name"]
+                        attributes : ["name", "image"]
                     }
                 ],
                 where:[{CustomerId:CustomerId},{id:id}]

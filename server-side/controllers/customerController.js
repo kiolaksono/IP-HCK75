@@ -16,9 +16,10 @@ class CustomerController {
         }
     }
 
-    static async getCustomerById(req,res,next){
+    static async getProfileCustomer(req,res,next){
         try {
-            const {id} = req.params
+            const {id} = req.user
+            console.log(id)
             const find = await Customer.findByPk(id, {
                 attributes:{
                     exclude:["password"]
@@ -38,7 +39,7 @@ class CustomerController {
 
     static async updateCustomerById(req,res,next){
         try {
-            const {id} = req.params
+            const {id} = req.user
             const find = await Customer.findByPk(id)
 
             if(!find) throw({name:"NotFound", message:"Customer no found"})

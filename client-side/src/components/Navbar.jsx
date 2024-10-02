@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
-
+import { Link } from 'react-router-dom'
 export default function Navbar() {
 
   const navigate = useNavigate()
@@ -14,7 +14,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 sticky top-0 z-[100]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -61,20 +61,14 @@ export default function Navbar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Home</a>
+            <Link to="/">
+            Home
+            </Link>
           </li>
           <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
+            <Link to="/profile">
+            Profile
+            </Link>
           </li>
           <li>
             <a>Item 3</a>

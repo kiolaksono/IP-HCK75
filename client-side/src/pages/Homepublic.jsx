@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxios from "../helpers/useAxios";
 import Card from "../components/Card";
-import Login from "./Login";
+import Login from "./Login"
 import Register from "./Register";
 
 export default function Homepublic() {

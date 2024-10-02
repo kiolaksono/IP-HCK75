@@ -8,9 +8,9 @@ const customers = express()
 customers.use(authentication)
 customers.get("/", CustomerController.getAllCustomer)
 customers.put("/:id", CustomerController.updateCustomerById)
+customers.get("/profile", CustomerController.getProfileCustomer)
 
 
-customers.get("/:id", CustomerController.getCustomerById)
 
 
 

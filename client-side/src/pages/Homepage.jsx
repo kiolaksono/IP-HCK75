@@ -32,9 +32,11 @@ export default function Homepage() {
 
   return (
     <>
-      {vehicles.map((el) => (
-        <Card key={el.id} data={el} />
-      ))}
+      <div className="flex flex-wrap justify-center w-full gap-10 p-10 bg-slate-300">
+        {vehicles.map((el) => (
+          <Card key={el.id} data={el} />
+        ))}
+      </div>
     </>
   );
 }

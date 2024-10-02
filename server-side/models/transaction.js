@@ -67,6 +67,7 @@ module.exports = (sequelize, DataTypes) => {
     status: {
       type:DataTypes.STRING,
       allowNull:false,
+      defaultValue:"Book",
       validate:{
         notNull:{
           msg:"Status is required"
@@ -81,9 +82,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Transaction',
   });
 
-  Transaction.beforeValidate(el=>{
-    el.status = "Paid"
-  })
+ 
 
   
   

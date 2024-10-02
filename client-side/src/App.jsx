@@ -1,15 +1,12 @@
-import Button from "./components/Button"
-import Homepage from "./pages/Homepage"
+import { RouterProvider } from "react-router-dom"
+
+import { router } from "./routers"
 
 
 function App() {
 
   return (
-    <>
-      <h1>Hello World</h1>
-      <Homepage />
-      <Button />
-    </>
+    <RouterProvider router = {router} />
   )
 }
 

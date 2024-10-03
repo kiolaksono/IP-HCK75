@@ -71,7 +71,9 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <a>Item 3</a>
+            <Link to="/employee">
+            Employee
+            </Link>
           </li>
         </ul>
       </div>

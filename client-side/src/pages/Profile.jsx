@@ -16,7 +16,6 @@ export default function Profile() {
   const fetchProfile = async () => {
     try {
       const response = await tryFetch("customers/profile");
-      // console.log(response)
       setProfile(response.data);
     } catch (error) {
       console.log(error);
@@ -39,6 +38,8 @@ export default function Profile() {
   useEffect(() => {
     fetchTransaction();
   }, []);
+
+  console.log(profile)
 
   return (
     <div className="w-full flex flex-wrap p-10">
@@ -68,7 +69,7 @@ export default function Profile() {
           <tbody>
             {/* row 1 */}
             {transactions.map((el,i)=>(
-            <tr>
+            <tr key={i}>
               <td>{i}</td>
               <td>{el.Vehicle.name}</td>
               <td>{formatDate(el.createdAt)}</td>

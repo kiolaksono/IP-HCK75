@@ -5,6 +5,7 @@ import Homepage from "../pages/Homepage";
 import Homepublic from "../pages/Homepublic";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
+import Employee from "../pages/Employee";
 
 export const router = createBrowserRouter([
     {
@@ -52,7 +53,15 @@ export const router = createBrowserRouter([
                 path:"profile",
                 element:<Profile />
                 
+            },
+            {
+                path:"employee",
+                element:<Employee />
+            },
+            {
+                
             }
+            
         ]
     }
 ])

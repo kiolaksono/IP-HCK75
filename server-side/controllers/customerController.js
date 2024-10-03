@@ -56,7 +56,6 @@ class CustomerController {
     try {
       const client = new OAuth2Client();
       const { googleToken } = req.body;
-      console.log(googleToken)
       const ticket = await client.verifyIdToken({
         idToken: googleToken,
         audience: process.env.GOOGLE_CLIENT_ID,

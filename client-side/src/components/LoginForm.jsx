@@ -28,8 +28,6 @@ export default function LoginForm({ data, handleInputLogin, handleLogin }) {
           googleToken: response.credential,
         });
 
-        // console.log(res)
-
         localStorage.setItem("access_token", data.access_token);
 
         // navigate to the home page or do magic stuff
@@ -112,9 +110,11 @@ export default function LoginForm({ data, handleInputLogin, handleLogin }) {
                 </Link>
               </p>
             </div>
+            {/* Login Google Auth Button */}
             <div className=" mt-5">
               <div id="buttonDiv"></div>
             </div>
+            {/* End */}
           </div>
         </form>
       </div>

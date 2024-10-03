@@ -62,7 +62,8 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty:{
           msg:"Price is required"
         }
-      }
+      },
+      defaultValue:35000
     },
     status: {
       type:DataTypes.STRING,
@@ -81,6 +82,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Transaction',
   });
+
 
  
 

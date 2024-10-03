@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import useAxios from "../helpers/useAxios";
-import formatDate from "../helpers/formatDate";
 import Button from "../components/Button";
+import TableTransaction from "../components/TableTransaction";
+import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Profile() {
   const { tryFetch } = useAxios();
@@ -11,7 +13,9 @@ export default function Profile() {
     avatar: "",
   });
 
-  const [transactions, setTransactions] = useState([]);
+  const params = useParams()
+
+  const transactions = useSelector((state)=> state.transactions.detail)
 
   const fetchProfile = async () => {
     try {
@@ -22,64 +26,28 @@ export default function Profile() {
     }
   };
 
-  const fetchTransaction = async () => {
-    try {
-      const response = await tryFetch("transactions");
-      setTransactions(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     fetchProfile();
   }, []);
 
-  useEffect(() => {
-    fetchTransaction();
-  }, []);
-
-  console.log(profile)
 
   return (
     <div className="w-full flex flex-wrap p-10">
-      <div className="w-1/3">
-        <div className="card bg-base-100 w-96 shadow-xl">
+      <div className="w-1/3 flex justify-center">
+        <div className="card bg-white-100 w-96 shadow-xl">
           <figure>
             <img src={profile.avatar} alt="avatar" />
           </figure>
-          <div className="card-body">
-            <h2 className="card-title">{profile.fullName}</h2>
+          <div className="card-body items-center">
+            <h2 className="card-title text-center">{profile.fullName}</h2>
+            <br/>
           </div>
         </div>
       </div>
 
       <div className="w-2/3">
-      <div className="overflow-x-auto">
-        <table className="table table-zebra">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Vehicle</th>
-              <th>Booking Date</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            {transactions.map((el,i)=>(
-            <tr key={i}>
-              <td>{i}</td>
-              <td>{el.Vehicle.name}</td>
-              <td>{formatDate(el.createdAt)}</td>
-              <td>{el.status==="paid" ?  el.status : <Button name="Pay"/>}</td>
-            </tr>
-
-            ))}
-          </tbody>
-        </table>
-        </div>
+      <TableTransaction />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ const { Customer } = require('../models')
 
 async function authentication(req, res, next) {
     const bearerToken = req.headers["authorization"]
+    
     if (!bearerToken) {
         next({ name: "Unauthorized", message: "Invalid Token" })
         return
@@ -17,6 +18,7 @@ async function authentication(req, res, next) {
 
     try {
         const data = verifyToken(token)
+        
         const find = await Customer.findByPk(data.id)
 
         if (!find) {

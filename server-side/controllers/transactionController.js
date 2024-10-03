@@ -10,6 +10,23 @@ class TransactionController{
         }
     }
 
+    static async deleteTransaction(req,res,next){
+        try {
+            const {id} = req.params
+            console.log(id,"<<<<<<+++++")
+            const find = await Transaction.findByPk(id)
+
+            if(!find) next({name:"NotFound", message:"Transaction not found!"})
+
+            await find.destroy()
+
+            res.status(200).json({ message: `Transaction has been deleted` })
+
+        } catch (error) {
+            next(error)
+        }
+    }
+
     static async postNewTransaction(req,res,next){
         try {
             // const {CustomerId, VehicleId, EmployeeId} = req.params
@@ -75,13 +92,11 @@ class TransactionController{
         try {
             const {id} = req.params
 
-            const data = await Transaction.findOne({
-                where:{id}
-            })
-            
+            const data = await Transaction.findByPk(id)
+
             if(!data) throw({name:"NotFound", message:"Content not found"})
             
-            await data.update(req.body, {where:{id}})
+            await data.update(req.body)
 
             res.status(200).json({message:`Transaction for id ${id} has been updated`})
         } catch (error) {

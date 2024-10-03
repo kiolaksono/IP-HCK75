@@ -6,6 +6,7 @@ import Homepublic from "../pages/Homepublic";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import Employee from "../pages/Employee";
+import AddTransaction from "../pages/AddTransaction"
 
 export const router = createBrowserRouter([
     {
@@ -59,9 +60,9 @@ export const router = createBrowserRouter([
                 element:<Employee />
             },
             {
-                
+                path:"addtransaction",
+                element:<AddTransaction />   
             }
-            
         ]
     }
 ])

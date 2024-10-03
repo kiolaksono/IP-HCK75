@@ -24,6 +24,15 @@ function useAxios(){
         }
     }
 
+    const tryFetchWizardById = async (id)=>{
+        try {
+            const response = await axios.get(`https://hp-api.herokuapp.com/api/character/${id}`)
+            return response
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const tryFetch = async (url) => {
         try {
             const response  = await baseURL.get(url, {
@@ -64,16 +73,17 @@ function useAxios(){
     }
 
     const tryUpdate = async (url, data) =>{
-        try {
-            const response = await baseURL.put(url, data,{
+        try {            
+            const response = await baseURL.put(url,data, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-                  },
+                  }
             })
 
+            console.log(response)
             return response
         } catch (error) {
-            Swal.fire(error.response.data.error)
+            console.log(error)
         }
     }
 
@@ -86,11 +96,12 @@ function useAxios(){
             })
             return response
         }catch(error){
-            Swal.fire(error.response.data.error)
+            console.log(error)
+            // Swal.fire(error.response.data.error)
         }
     }
 
-    return {tryFetch, tryFetchWizard, tryAuth, tryDelete, tryPost, tryUpdate}
+    return {tryFetch, tryFetchWizard, tryFetchWizardById, tryAuth, tryDelete, tryPost, tryUpdate}
 
 }
 

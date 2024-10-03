@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import useAxios from "../helpers/useAxios";
+import axios from "axios";
 
 export const employeeSlice = createSlice({
     name: 'employee',
@@ -9,7 +10,6 @@ export const employeeSlice = createSlice({
     },
     reducers:{
         setEmployees : (state, action) =>{
-            console.log(action, "STATES") //{payload:[], type:""}
             state.data = action.payload
         },
         setEmployee : (state, action) => {
@@ -27,7 +27,6 @@ export const {setEmployee, setEmployees} = employeeSlice.actions
 export const fetchEmployees = () =>{
     return async (dispatch) =>{
         const response = await tryFetchWizard("");
-        console.log(response.data)
         dispatch(setEmployees(response.data))
     }
 }
@@ -35,6 +34,7 @@ export const fetchEmployees = () =>{
 export const fetchEmployeeById = (employeeId)=>{
     return async (dispatch) => {
         const {data} = await axios.get(`https://hp-api.herokuapp.com/api/character/${employeeId}`)
+        console.log(data)
         dispatch(setEmployee(data))
     }
 }

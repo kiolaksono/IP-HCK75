@@ -68,6 +68,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         notEmpty:{
           msg:"Avatar is required"
+        },
+        isUrl:{
+          msg:"Invalid URL format"
         }
       }
     }

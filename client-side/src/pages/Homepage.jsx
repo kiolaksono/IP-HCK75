@@ -1,29 +1,21 @@
-import { useEffect, useState } from "react";
-import useAxios from "../helpers/useAxios";
+import { useEffect } from "react";
 import Card from "../components/Card";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchVehicles } from "../features/vehicleSlice";
 
 export default function Homepage() {
-  const { tryFetch } = useAxios();
+  const dispatch = useDispatch()
 
-  const [vehicles, setVehicles] = useState([]);
-
-  const fetchVehicle = async () => {
-    try {
-      const { data } = await tryFetch("");
-      setVehicles(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  const vehicles = useSelector((state)=> state.vehicles)
+  
   useEffect(() => {
-    fetchVehicle();
+    dispatch(fetchVehicles())
   }, []);
 
   return (
     <>
       <div className="flex flex-wrap justify-center w-full gap-10 p-10 bg-slate-300">
-        {vehicles.map((el) => (
+        {vehicles.data.map((el) => (
           <Card key={el.id} data={el} />
         ))}
       </div>

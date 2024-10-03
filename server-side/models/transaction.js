@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false,
       validate:{
         notNull:{
-          msg:"You must login first!"
+          msg:"Customer Id is required"
         },
         notEmpty:{
-          msg:"You must login first!"
+          msg:"Customer Id is required"
         }
       }
     },

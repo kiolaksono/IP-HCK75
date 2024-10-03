@@ -5,9 +5,7 @@ import Button from "./Button";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTransaction, fetchTransaction, fetchUpdateStatusTransaction } from "../features/transactionSlice";
 import { useParams } from "react-router-dom";
-import { fetchEmployeeById } from "../features/employeeSlice";
 import RenderEmployee from "./RenderEmployee";
-import useAxios from "../helpers/useAxios";
 
 export default function TableTransaction({data}) {
   

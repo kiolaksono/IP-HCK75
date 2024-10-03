@@ -49,26 +49,19 @@ function useAxios(){
         }
     }
 
-    const tryOAuth = async (url, data) =>{
-        try {
-            const response = await baseURL.post(url, data)
-            return response
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     const tryPost = async (url, data) =>{
         try {
             const response = await baseURL.post(url, data,{
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-                  },
+                },
             })
-
-            return response
+            console.log(response,"<<<<<")
+            console.log(localStorage.getItem("access_token"))
+            // return response
         } catch (error) {
-            Swal.fire(error.response.data.error)
+            console.log(error)
+            // Swal.fire(error.response.data.error)
         }
     }
 

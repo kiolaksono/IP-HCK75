@@ -29,9 +29,9 @@ class TransactionController{
 
     static async postNewTransaction(req,res,next){
         try {
-            // const {CustomerId, VehicleId, EmployeeId} = req.params
+            const {id} = req.user
 
-            const postTransaction = await Transaction.create({...req.body})
+            const postTransaction = await Transaction.create({...req.body, CustomerId:id})
 
             res.status(201).json({data: postTransaction, message:`New transaction has been inputed`})
         } catch (error) {

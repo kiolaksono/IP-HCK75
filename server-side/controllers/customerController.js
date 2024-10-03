@@ -35,23 +35,6 @@ class CustomerController {
     }
   }
 
-  static async updateCustomerById(req, res, next) {
-    try {
-      const { id } = req.user;
-      const find = await Customer.findByPk(id);
-
-      if (!find) throw { name: "NotFound", message: "Customer no found" };
-
-      await find.update(req.body, { where: { id } });
-
-      res
-        .status(200)
-        .json({ message: `Customer with id ${id} has been updated` });
-    } catch (error) {
-      next(error);
-    }
-  }
-
   static async postGoogleAuth(req, res, next) {
     try {
       const client = new OAuth2Client();
@@ -67,7 +50,7 @@ class CustomerController {
           fullName: payload.name,
           email: payload.email,
           avatar: payload.picture,
-          password: "google_id",
+          password: process.env.PASSWORD_GOOGLE_AUTH,
         },
         hooks: false,
       });

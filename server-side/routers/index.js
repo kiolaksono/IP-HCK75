@@ -7,11 +7,14 @@ const transactions = require('./transaction')
 const VehicleController = require('../controllers/vehicleController')
 const authentication = require('../middlewares/authentication')
 const errorHandler = require('../middlewares/errorHandler')
+const GeminiController = require('../controllers/geminiController')
 
 router.get("/", VehicleController.getPubVehicle)
 router.post("/login", CustomerController.postLogin)
 router.post('/register', CustomerController.postRegister)
 router.post("/auth/google", CustomerController.postGoogleAuth)
+
+router.post("/employees", GeminiController.postPrompts)
 
 router.use('/customers', customers)
 

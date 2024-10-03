@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { Link } from 'react-router-dom'
 import NavbarMenu from "./NavbarMenu";
+import Swal from "sweetalert2";
 
 
 export default function Navbar() {
@@ -15,6 +16,23 @@ export default function Navbar() {
     navigate("/")
   
   }
+
+  const logoutConfirmation = () => {
+    Swal.fire({
+      title : 'Are you sure you?',
+      text : 'Charlie will miss you',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText :'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Perform the delete action here
+        handleLogout()
+      }
+    });
+  };
 
   return (
     <div className="navbar bg-base-100 sticky top-0 z-[100]">
@@ -51,7 +69,7 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <Button onClick={handleLogout} name="Logout"/>
+        <Button onClick={logoutConfirmation} name="Logout"/>
       </div>
     </div>
   );

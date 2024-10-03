@@ -3,6 +3,9 @@ import AddForm from "../components/AddForm";
 
 export default function AddTransaction(){
     return(
-        <AddForm />
+        <div className="p-10">
+            <AddForm />
+
+        </div>
     )
 }

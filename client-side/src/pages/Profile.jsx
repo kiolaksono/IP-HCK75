@@ -33,20 +33,19 @@ export default function Profile() {
 
 
   return (
-    <div className="w-full flex flex-wrap p-10">
+    <div className="w-full flex flex-wrap p-10 bg-slate-300">
       <div className="w-1/3 flex justify-center">
-        <div className="card bg-white-100 w-96 shadow-xl">
+        <div className="card bg-white w-96 h-96 shadow-xl">
           <figure>
             <img src={profile.avatar} alt="avatar" />
           </figure>
           <div className="card-body items-center">
             <h2 className="card-title text-center">{profile.fullName}</h2>
-            <br/>
           </div>
         </div>
       </div>
 
-      <div className="w-2/3">
+      <div className=" w-2/3">
       <TableTransaction />
       </div>
     </div>

@@ -54,35 +54,11 @@ class TransactionController{
                         attributes : ["name","image"]
                     }
                 ],
-                where:{CustomerId:id}
+                where:{CustomerId:id},
+                order:[ ["status", "asc"], ["createdAt", "desc"],]
             })
 
             res.status(200).json(data)
-        } catch (error) {
-            next(error)
-        }
-    }
-
-    static async getTransactionByCustomerIdAndId(req,res,next){
-        try {
-            const {id, CustomerId} = req.params
-
-            const data = await Transaction.findOne({
-                include:[
-                    {
-                        model: Customer,
-                        attributes:["fullName", "avatar"]
-
-                    },
-                    {
-                        model : Vehicle,
-                        attributes : ["name", "image"]
-                    }
-                ],
-                where:[{CustomerId:CustomerId},{id:id}]
-            })
-            
-            res.json(data)
         } catch (error) {
             next(error)
         }

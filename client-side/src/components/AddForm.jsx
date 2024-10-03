@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEmployees } from "../features/employeeSlice";
 import { fetchVehicles } from "../features/vehicleSlice";
-import Employee from "../pages/Employee";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../helpers/useAxios";

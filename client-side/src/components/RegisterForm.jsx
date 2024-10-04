@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "./Button";
 
 export default function RegisterForm({data, handleInputRegister, handleSubmit}) {
@@ -94,6 +95,14 @@ export default function RegisterForm({data, handleInputRegister, handleSubmit}) 
 
             <div className="mt-6 flex items-center justify-start gap-x-6">
               <Button name="Save" />
+              <p className="font-semibold">
+                <Link
+                  className="text-xl text-blue-500 font-bold text-end"
+                  to="/"
+                >
+                  Login
+                </Link>
+              </p>
             </div>
           </div>
         </div>

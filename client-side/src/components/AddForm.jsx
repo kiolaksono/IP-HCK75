@@ -4,14 +4,11 @@ import { fetchEmployees } from "../features/employeeSlice";
 import { fetchVehicles } from "../features/vehicleSlice";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-import useAxios from "../helpers/useAxios";
 import { baseURL } from "../helpers/http-client";
 import Swal from "sweetalert2";
 
 export default function AddForm() {
   const dispatch = useDispatch();
-
-  const {tryPost} = useAxios()
 
   const navigate = useNavigate()
   const employees = useSelector((state) => state.employees);
@@ -54,7 +51,8 @@ export default function AddForm() {
       if(response.status === 201) Swal.fire("Queue has created")
       navigate("/profile")
     } catch (error) {
-      console.log(error)
+      if(error.name) Swal.fire(error.response.data.message)
+      Swal.fire(error)
     }
   }
 

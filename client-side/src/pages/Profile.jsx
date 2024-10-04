@@ -33,7 +33,7 @@ export default function Profile() {
 
 
   return (
-    <div className="w-full flex flex-wrap p-10 bg-slate-300">
+    <div className="w-full flex flex-wrap p-10 bg-white">
       <div className="w-1/3 flex justify-center">
         <div className="card bg-white w-96 h-96 shadow-xl">
           <figure>

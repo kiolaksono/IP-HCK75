@@ -44,8 +44,8 @@ function useAxios(){
             return response
             
         } catch (error) {
-            console.log(error)
-            Swal.fire(error.response.data.error)
+            if(error.name) Swal.fire(error.response.data.error)
+                Swal.fire(error)
         }
     }
 
@@ -60,8 +60,8 @@ function useAxios(){
             console.log(localStorage.getItem("access_token"))
             // return response
         } catch (error) {
-            console.log(error)
-            // Swal.fire(error.response.data.error)
+            if(error.name) Swal.fire(error.response.data.error)
+            Swal.fire(error)
         }
     }
 

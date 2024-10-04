@@ -6,10 +6,10 @@ class GeminiController{
 
             const {employeeName} = req.body
             let result = await gemini(employeeName)
-            
             res.status(201).json(result)
         } catch (error) {
             console.log(error)
+            next(error)
         }
     }
 }

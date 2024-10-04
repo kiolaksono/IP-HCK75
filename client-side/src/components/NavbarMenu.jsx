@@ -25,6 +25,11 @@ export default function NavbarMenu(){
             Book Now!
             </Link>
           </li>
+          <li>
+            <Link to="/geminiAI">
+            Ask AI
+            </Link>
+          </li>
         </>
     )
 }

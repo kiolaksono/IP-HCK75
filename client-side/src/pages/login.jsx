@@ -3,6 +3,7 @@ import useAxios from "../helpers/useAxios"
 import { useNavigate } from "react-router-dom"
 import Button from "../components/Button"
 import LoginForm from "../components/LoginForm"
+import Swal from "sweetalert2"
 
 export default function Login(){
 
@@ -23,9 +24,18 @@ export default function Login(){
       try {
         const response =  await tryAuth("login",data)
         localStorage.setItem("access_token", response.data.accessToken)
-        navigation("/home")
+        if(localStorage.getItem("access_token")==="undefined"){
+          Swal.fire("Email or password is incorrect")
+          localStorage.clear()
+          navigation("/")
+        }else{
+          Swal.fire("Login success")
+          navigation("/home")
+
+        }
       } catch (error) {
-        console.log(error)
+        // console.log(error)
+        Swal.fire(error)
       }
     } 
     

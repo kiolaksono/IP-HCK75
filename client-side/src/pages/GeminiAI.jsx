@@ -20,26 +20,25 @@ export default function GeminiAI() {
     const { name, value } = e.target;
     setEmployeeName(value);
     try {
-      console.log(value);
       const res = await baseURL.post("employees", { employeeName: value });
-      console.log(res.data)
+
       setGemini(res.data);
     } catch (error) {
-      console.log(error)
-      Swal.fire(error);
+
+      Swal.fire(error.response.data.message);
     }
   };
-  console.log(gemini);
 
   return (
     <>
+    <div className="flex flex-wrap justify-center">
       <select
         className="select select-success w-full max-w-xs"
         value={employeeName}
         onChange={handleChange}
       >
         <option disabled selected>
-          Pick your favorite anime
+          Pick your favorite employee
         </option>
         {employees.data.map((el) => {
           return (
@@ -49,6 +48,7 @@ export default function GeminiAI() {
           );
         })}
       </select>
+      </div>
 
       <div className="card lg:card-side bg-base-100 shadow-xl">
        

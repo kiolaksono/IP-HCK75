@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     loader: () => {
       const access_token = localStorage.getItem("access_token");
-      if (!access_token) throw redirect("/login");
+      if (!access_token) throw redirect("/");
       return null;
     },
     children: [

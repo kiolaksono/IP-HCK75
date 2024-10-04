@@ -20,12 +20,11 @@ export default function Register(){
     e.preventDefault();
     try {
       const response = await tryPost("register", formRegister);
-      console.log(response)
-      Swal.fire("New Account has created")
-      navigate("/");
+
+        Swal.fire("New Account has created")
+        navigate("/");
     } catch (error) {
-      // console.log(error);
-      Swal.fire(error)
+      Swal.fire(error.response.data.message)
     }
   };
 

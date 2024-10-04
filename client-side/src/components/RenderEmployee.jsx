@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import useAxios from "../helpers/useAxios"
+import Swal from "sweetalert2"
 
 export default function RenderEmployee({id}){
     const [employee, setEmployee] = useState([])
@@ -13,6 +14,7 @@ export default function RenderEmployee({id}){
             setEmployee(response.data[0].name)
         } catch (error) {
             console.log(error)
+            Swal.fire("Couldn't render employee name")
         }
     }
 

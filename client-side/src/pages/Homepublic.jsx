@@ -3,6 +3,7 @@ import useAxios from "../helpers/useAxios";
 import Card from "../components/Card";
 import Login from "./Login"
 import Register from "./Register";
+import Swal from "sweetalert2";
 
 export default function Homepublic() {
   const { tryFetch } = useAxios();
@@ -14,7 +15,8 @@ export default function Homepublic() {
       const { data } = await tryFetch("");
       setVehicles(data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      Swal.fire(error.response.data.message)
     }
   };
 

@@ -6,12 +6,10 @@ function useAxios(){
 
     const tryAuth = async (url, data)=>{
         try {
-
             const response = await baseURL.post(url, data)
             return response
         } catch (error) {
-            console.log(error)
-            // Swal.fire(error.response.data.error)
+            throw error
         }
     }
 
@@ -20,7 +18,7 @@ function useAxios(){
             const response = await axios.get("https://hp-api.herokuapp.com/api/characters")
             return response
         } catch (error) {
-            console.log(error)
+            throw error
         }
     }
 
@@ -29,7 +27,7 @@ function useAxios(){
             const response = await axios.get(`https://hp-api.herokuapp.com/api/character/${id}`)
             return response
         } catch (error) {
-            console.log(error)
+            throw error
         }
     }
 
@@ -44,8 +42,7 @@ function useAxios(){
             return response
             
         } catch (error) {
-            if(error.name) Swal.fire(error.response.data.error)
-                Swal.fire(error)
+            throw error
         }
     }
 
@@ -56,12 +53,10 @@ function useAxios(){
                     Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                 },
             })
-            console.log(response,"<<<<<")
-            console.log(localStorage.getItem("access_token"))
             // return response
         } catch (error) {
-            if(error.name) Swal.fire(error.response.data.error)
-            Swal.fire(error)
+
+            throw error
         }
     }
 
@@ -73,10 +68,9 @@ function useAxios(){
                   }
             })
 
-            console.log(response)
             return response
         } catch (error) {
-            console.log(error)
+            throw error
         }
     }
 
@@ -89,8 +83,7 @@ function useAxios(){
             })
             return response
         }catch(error){
-            console.log(error)
-            // Swal.fire(error.response.data.error)
+            throw error
         }
     }
 

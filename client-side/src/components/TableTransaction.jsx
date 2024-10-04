@@ -59,7 +59,7 @@ export default function TableTransaction({data}) {
                 <td><RenderEmployee id={el.EmployeeId}/></td>
                 <td>{formatDate(el.createdAt)}</td>
                 <td>
-                  <div className=" w-1/2 flex flex-nowrap justify-between text-center items-center sm:w-full sm:flex sm:justify-between">
+                  <div className=" w-1/2 flex flex-nowrap justify-between text-center items-center w-full flex justify-between">
                   {el.status === "Paid" ? el.status : <Button onClick={() => dispatch(fetchUpdateStatusTransaction(el.id))} name="Pay" />}
                     <Button onClick={()=>handleDelete(el.id)} name="Delete" />
 

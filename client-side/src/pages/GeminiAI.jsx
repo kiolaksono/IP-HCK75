@@ -21,10 +21,10 @@ export default function GeminiAI() {
     setEmployeeName(value);
     try {
       const res = await baseURL.post("employees", { employeeName: value });
-
+      console.log(res)
       setGemini(res.data);
     } catch (error) {
-
+      console.log(error)
       Swal.fire(error.response.data.message);
     }
   };

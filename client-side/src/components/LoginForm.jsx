@@ -2,7 +2,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { useEffect } from "react";
-import axios from 'axios'
 import useAxios from "../helpers/useAxios";
 
 
@@ -20,11 +19,11 @@ export default function LoginForm({ data, handleInputLogin, handleLogin }) {
       client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
       // After the process is complete, the callback function will be called
       callback: async (response) => {
-        console.log("Encoded JWT ID token: " + response.credential)
+        // console.log("Encoded JWT ID token: " + response.credential)
 
         // Here is the logic to send the credential to the server
         // You can use axios or fetch to send the credential to the server
-        const {data} = await tryAuth("auth/google", {
+        const {data} = await tryAuth("/auth/google", {
           googleToken: response.credential,
         });
 
